@@ -33,6 +33,8 @@ import { ProductRead3Component } from './components/product/product-read3/produc
 //Personalização para atribuição de valores personalizado ( Virgula ao invés de ponto para dinherio ,por exemplo)
 import localePt from '@angular/common/locales/pt'
 import { registerLocaleData } from '@angular/common';
+import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
+import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 
 registerLocaleData(localePt);
 
@@ -48,7 +50,9 @@ registerLocaleData(localePt);
     ForDirective,
     ProductCreateComponent,
     ProductReadComponent,
-    ProductRead3Component
+    ProductRead3Component,
+    ProductUpdateComponent,
+    ProductDeleteComponent
   ],
   imports: [
     BrowserModule,
