@@ -3,6 +3,8 @@ import { ProductService } from './../product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog'
+import { EnumTipoMensagem } from '../../shared/mensagem/tipo-mensagem.enum';
+import { Mensagem } from '../../shared/mensagem/mensagem.model';
 @Component({
   selector: 'app-product-delete',
   templateUrl: './product-delete.component.html',
@@ -26,7 +28,7 @@ export class ProductDeleteComponent implements OnInit {
 
   confirmarExclusao(){
     this.productService.delete(this.product.id).subscribe(()=>{
-      this.productService.showMessage('Produto excluido com sucesso !');
+      this.productService.showMessageSucess(new Mensagem('   Produto excluído !  '));
       this.router.navigate(['/products']);
     }
     )

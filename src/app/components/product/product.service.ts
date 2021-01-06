@@ -1,9 +1,13 @@
+import { Mensagem } from './../shared/mensagem/mensagem.model';
+import { MensagemComponent } from './../shared/mensagem/mensagem.component';
 import { catchError, map } from 'rxjs/operators';
 import { Product } from './product.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, BehaviorSubject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { EnumTipoMensagem } from '../shared/mensagem/tipo-mensagem.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +17,65 @@ export class ProductService {
   baseUrl = "http://localhost:3001/products"
 
   constructor(private snackBar: MatSnackBar,
+    public dialog: MatDialog,
     private http: HttpClient) { }
 
-  showMessage(msg: string, isError: boolean = false ): void{
-    this.snackBar.open(msg, 'X',{
-      duration:3000,
-      horizontalPosition: "right",
-      verticalPosition: "top",
-      panelClass: isError ? ['msg-error'] : ['msg-success']
-    })
-  }
+    showMessageSucess(msg : Mensagem): void{
+      const dialogRef  = this.dialog.open(MensagemComponent, 
+        {data: {title: msg.title,
+        msg: msg.msg,
+        btnOk: false,
+        sucesso: true
+      }});
+
+      dialogRef.afterOpened().subscribe( a => {
+        setTimeout(() => {
+          dialogRef.close();
+        }, 3000);
+      })
+
+      
+    }
+
+    showMessageAlerta(msg : Mensagem): void{
+      const dialogRef  = this.dialog.open(MensagemComponent, 
+        {data: {title: msg.title,
+        msg: msg.msg,
+        tipoMensagem: EnumTipoMensagem.Alerta,
+        btnOk: true,
+        alerta: true}
+      });
+
+      dialogRef.afterOpened().subscribe( a => {
+        setTimeout(() => {
+          dialogRef.close();
+        }, 3000);
+      })
+    }
+
+    showMessageErro(msg : Mensagem): void{
+      const dialogRef  = this.dialog.open(MensagemComponent, 
+        {data: {title: msg.title,
+        msg: msg.msg,
+        tipoMensagem: EnumTipoMensagem.Negativo,
+        btnOk: true,
+        erro: true}
+      });
+
+      dialogRef.afterOpened().subscribe( a => {
+        setTimeout(() => {
+          dialogRef.close();
+        }, 3000);
+      })
+    }
+
+      
+    // this.snackBar.open(msg, 'X',{
+    //   duration:3000,
+    //   horizontalPosition: "right",
+    //   verticalPosition: "top",
+    //   panelClass: isError ? ['msg-error'] : ['msg-success']
+    // })
 
   create(product : Product) : Observable<Product>{
     return this.http.post<Product>(this.baseUrl,product).pipe(
@@ -32,7 +85,7 @@ export class ProductService {
   }
 
   errorHandler(e: any) : Observable<any>{
-    this.showMessage('Ocorreu um erro !',true)
+    this.showMessageErro(new Mensagem('Ocorreu um erro !',EnumTipoMensagem.Negativo))
     return   EMPTY ;
   }
 

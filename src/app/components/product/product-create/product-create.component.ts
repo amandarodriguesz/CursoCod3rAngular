@@ -2,6 +2,8 @@ import { Product } from './../product.model';
 import { Router } from '@angular/router';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
+import { Mensagem } from '../../shared/mensagem/mensagem.model';
+import { EnumTipoMensagem } from '../../shared/mensagem/tipo-mensagem.enum';
 
 @Component({
   selector: 'app-product-create',
@@ -24,7 +26,7 @@ export class ProductCreateComponent implements OnInit {
 
     createProduct(): void{
       this.productService.create(this.product).subscribe(() => {
-        this.productService.showMessage('Produto Criado !')
+        this.productService.showMessageSucess(new Mensagem('Produto cadastrado !',EnumTipoMensagem.Positivo,true))
         this.router.navigate(['/products'])
       } )
     }

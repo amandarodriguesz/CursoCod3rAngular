@@ -1,3 +1,4 @@
+import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule , LOCALE_ID } from '@angular/core';
 
@@ -35,6 +36,8 @@ import localePt from '@angular/common/locales/pt'
 import { registerLocaleData } from '@angular/common';
 import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
+import { MensagemComponent } from './components/shared/mensagem/mensagem.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 registerLocaleData(localePt);
 
@@ -52,7 +55,8 @@ registerLocaleData(localePt);
     ProductReadComponent,
     ProductRead3Component,
     ProductUpdateComponent,
-    ProductDeleteComponent
+    ProductDeleteComponent,
+    MensagemComponent
   ],
   imports: [
     BrowserModule,
@@ -70,13 +74,18 @@ registerLocaleData(localePt);
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule,
+    MatGridListModule
   ],
   exports:[],
   providers: [{
     provide: LOCALE_ID,
     useValue: 'pt-br'
   }],
+  entryComponents: [
+    MensagemComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

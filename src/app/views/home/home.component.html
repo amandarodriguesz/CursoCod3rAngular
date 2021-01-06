@@ -1,10 +1,18 @@
 <mat-card class="home mat-elevation-z3">
     <mat-card-title class="title">Bem Vindo!</mat-card-title>
     <mat-card-subtitle class="subtitle">
-        Sistema para exemplificar um cadastro em Angular !
+        Mensagens personalizadas com dialog!
     </mat-card-subtitle>
-    <ul>
-        <li *myFor="let n em [1,2,3]">{{n}}</li>
-    </ul>
     
+    <mat-grid-list cols="3" rowHeight="3:1" class="list">
+        <mat-grid-tile>
+            <button mat-fab color="primary" (click)="sucess()">Sucesso</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button mat-fab color="accent" (click)="alert()">Aviso</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button mat-fab color="warn" (click)="error()">Erro</button>
+        </mat-grid-tile>
+    </mat-grid-list>
 </mat-card>

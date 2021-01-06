@@ -3,6 +3,8 @@ import { Product } from './../product.model';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EnumTipoMensagem } from '../../shared/mensagem/tipo-mensagem.enum';
+import { Mensagem } from '../../shared/mensagem/mensagem.model';
 
 @Component({
   selector: 'app-product-update',
@@ -23,7 +25,7 @@ export class ProductUpdateComponent implements OnInit {
 
   updateProduct(): void{
     this.productService.update(this.product).subscribe(() => {
-      this.productService.showMessage('Produto atualizado com sucesso !');
+      this.productService.showMessageSucess(new Mensagem('Produto atualizado !'));
       this.router.navigate(["/products"]);
     })
   }

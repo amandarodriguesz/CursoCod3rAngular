@@ -1,0 +1,48 @@
+<div class="principal">
+  <div class="sa" *ngIf="obj.sucesso">
+    <div class="sa-success">
+      <div class="sa-success-tip"></div>
+      <div class="sa-success-long"></div>
+      <div class="sa-success-placeholder"></div>
+      <div class="sa-success-fix"></div>
+    </div>
+  </div>
+  <div class="sa" *ngIf="obj.alerta">
+    <div class="sa-warning">
+      <div class="sa-warning-body"></div>
+      <div class="sa-warning-dot"></div>
+    </div>
+  </div>
+  <div class="sa" *ngIf="obj.erro">
+    <div class="sa-error">
+      <div class="sa-error-x">
+        <div class="sa-error-left"></div>
+        <div class="sa-error-right"></div>
+      </div>
+      <div class="sa-error-placeholder"></div>
+      <div class="sa-error-fix"></div>
+    </div>
+  </div>
+
+  <div>
+    <h2 mat-dialog-title>{{ obj.title }}</h2>
+  </div>
+
+  <div mat-dialog-content>
+    <p > 
+      {{ obj.msg}}
+    </p>
+  </div>
+  <div *ngIf="obj.btnOk" mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="onClose()">
+      Ok
+    </button>
+  </div>
+</div>
+
+
+
+<!-- <div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div> -->
