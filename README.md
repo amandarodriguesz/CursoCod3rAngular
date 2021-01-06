@@ -1,3 +1,10 @@
+Finalizando mais um curso ministrado pela equipe da COD3R, com o instrutor Leonardo Leitão. Ótima didática e conteúdo de extrema qualidade.
+
+
+
+Esse projeto foi desenvolvido com Angular 10 e Material Design
+
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
