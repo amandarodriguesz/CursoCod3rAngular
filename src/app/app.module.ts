@@ -29,7 +29,6 @@ import { ProductReadComponent } from './components/product/product-read/product-
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { ProductRead3Component } from './components/product/product-read3/product-read3.component';
 
 //Personalização para atribuição de valores personalizado ( Virgula ao invés de ponto para dinherio ,por exemplo)
 import localePt from '@angular/common/locales/pt'
@@ -53,7 +52,6 @@ registerLocaleData(localePt);
     ForDirective,
     ProductCreateComponent,
     ProductReadComponent,
-    ProductRead3Component,
     ProductUpdateComponent,
     ProductDeleteComponent,
     MensagemComponent
